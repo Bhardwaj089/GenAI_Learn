@@ -1,0 +1,29 @@
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+    - checkout: self
+    - task: NuGetToolInstaller@1
+      inputs:
+        versionSpec: '>=4.0.0'
+        checkLatest: true
+    - task: NuGetCommand@2
+      inputs:
+        restoreSolution: '**\*.sln'
+    - task: VSBuild@1
+      inputs:
+        solution: '**\*.sln'
+        msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
+    - task: VSTest@2
+      inputs:
+        platform: '$(BuildPlatform)'
+        configuration: '$(BuildConfiguration)'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(build.artifactStagingDirectory)'
+        artifactName: 'drop'

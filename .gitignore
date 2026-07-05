@@ -1,0 +1,65 @@
+# VS Code Themes and Configs
+*.xml
+*.theme
+*.vsix
+
+# Executables and DLLs
+*.exe
+*.dll
+*.so
+*.dylib
+*.o
+*.a
+
+# System Files
+desktop.ini
+Thumbs.db
+.DS_Store
+*.lnk
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+ENV/
+env/
+.venv
+
+# Large Model Files (optional - if you want to exclude them)
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.h5
+
+# OS
+.env
+.env.local
+*.log
