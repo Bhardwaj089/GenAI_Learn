@@ -1,0 +1,6 @@
+transformers>=4.38.0
+torch
+accelerate
+sentencepiece
+rich
+python-dotenv
